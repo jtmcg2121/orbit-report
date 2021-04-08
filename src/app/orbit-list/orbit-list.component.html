@@ -6,6 +6,11 @@
       <th>Operational</th>
       <th>Orbit Type</th>
       <th>Launch Date</th>
-   </tr>
+    </tr>
+    <tr *ngFor="let satellite of satellites; let i = index" [class.stripe]="i % 2 === 0">
+       <td *ngFor="let property of objectKeys(satellite)" [class.warning]="satellite.shouldShowWarning() && property === 'type'">
+          {{satellite[property]}}
+       </td>
+    </tr>
    <!-- TODO: put <tr *ngFor=""></tr> here -->
 </table>
